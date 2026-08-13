@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Física Lab</string>
+
+    <!-- Científico junior -->
+    <string name="scientist_title">Crea tu científico junior</string>
+    <string name="scientist_name_label">¿Cómo te llamas?</string>
+    <string name="scientist_name_hint">Escribe tu nombre</string>
+    <string name="scientist_choose_avatar">Elige tu avatar</string>
+    <string name="scientist_choose_coat">Elige el color de tu bata</string>
+    <string name="scientist_start_button">¡Empezar a experimentar!</string>
+
+    <!-- Laboratorios -->
+    <string name="labs_title">Laboratorios de Física</string>
+    <string name="labs_subtitle">Elige un laboratorio y descubre cómo funciona el mundo</string>
+
+    <!-- Flujo PEOE -->
+    <string name="step_predict">Predice</string>
+    <string name="step_experiment">Experimenta</string>
+    <string name="step_observe">Observa</string>
+    <string name="step_explain">Explica</string>
+    <string name="predict_question_header">Antes de experimentar…</string>
+    <string name="predict_confirm">Ya lo pensé, ¡vamos!</string>
+    <string name="run_experiment_button">Iniciar experimento</string>
+    <string name="reset_experiment_button">Reiniciar</string>
+    <string name="compare_prediction_title">Tu predicción vs. lo que pasó</string>
+    <string name="explain_title">¿Por qué pasó esto?</string>
+    <string name="next_experiment_button">Siguiente experimento</string>
+    <string name="finish_lab_button">Terminar laboratorio</string>
+
+    <!-- Cuaderno -->
+    <string name="notebook_title">Mi cuaderno de científico</string>
+    <string name="notebook_badges">Mis insignias</string>
+    <string name="notebook_progress">Mi progreso</string>
+    <string name="notebook_quiz">Preguntas rápidas</string>
+
+    <!-- Unidades -->
+    <string name="unit_meters">metros (m)</string>
+    <string name="unit_seconds">segundos (s)</string>
+    <string name="unit_speed">metros por segundo (m/s)</string>
+    <string name="unit_force">newtons (N)</string>
+    <string name="unit_mass">kilogramos (kg)</string>
+
+    <string name="back">Volver</string>
+    <string name="continue_label">Continuar</string>
+</resources>

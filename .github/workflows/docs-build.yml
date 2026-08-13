@@ -1,0 +1,41 @@
+name: docs-build
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'MEMORIA_DESCRIPTIVA.md'
+      - 'MANUAL_USUARIO.md'
+      - 'MANUAL_TECNICO.md'
+      - '.github/workflows/docs-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar pandoc y LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+
+      - name: Generar MEMORIA_DESCRIPTIVA.pdf
+        run: pandoc MEMORIA_DESCRIPTIVA.md -o MEMORIA_DESCRIPTIVA.pdf --pdf-engine=pdflatex -V geometry:margin=2.5cm
+
+      - name: Generar MANUAL_USUARIO.pdf
+        run: pandoc MANUAL_USUARIO.md -o MANUAL_USUARIO.pdf --pdf-engine=pdflatex -V geometry:margin=2.5cm
+
+      - name: Generar MANUAL_TECNICO.pdf
+        run: pandoc MANUAL_TECNICO.md -o MANUAL_TECNICO.pdf --pdf-engine=pdflatex -V geometry:margin=2.5cm
+
+      - name: Subir PDFs generados
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentacion-pdf
+          path: |
+            MEMORIA_DESCRIPTIVA.pdf
+            MANUAL_USUARIO.pdf
+            MANUAL_TECNICO.pdf

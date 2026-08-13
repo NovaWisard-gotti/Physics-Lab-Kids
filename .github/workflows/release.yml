@@ -1,0 +1,61 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Versión a publicar (ej. v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.7
+
+      - name: Generar gradle wrapper
+        run: gradle wrapper --gradle-version 8.7
+
+      - name: Dar permisos de ejecución a gradlew
+        run: chmod +x ./gradlew
+
+      - name: Ejecutar pruebas unitarias
+        run: ./gradlew test --stacktrace
+
+      - name: Compilar APK de release
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Renombrar APK
+        run: cp app/build/outputs/apk/release/app-release-unsigned.apk FisicaLab-v1.0.0.apk
+
+      - name: Crear GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Física Lab v1.0.0"
+          tag_name: ${{ github.ref_name || inputs.version }}
+          body: |
+            ## Física Lab v1.0.0
+
+            App educativa de Física para niños de 8 a 12 años, 100% offline.
+            8 laboratorios interactivos, 24 experimentos guiados (Predice → Experimenta → Observa → Explica),
+            30 preguntas de repaso y 8 insignias.
+          files: FisicaLab-v1.0.0.apk
