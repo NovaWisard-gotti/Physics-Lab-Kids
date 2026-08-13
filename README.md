@@ -1,4 +1,4 @@
-# 🔬 Física Lab (Physics Lab Kids)
+#  Física Lab (Physics Lab Kids)
 
 App educativa Android para aprender Física experimentando, no memorizando.
 Pensada para niños de 8 a 12 años, 100% en español, 100% offline.
@@ -8,14 +8,14 @@ Pensada para niños de 8 a 12 años, 100% en español, 100% offline.
 - **Repositorio**: `physics-lab-kids-android`
 - **minSdk**: 24 · **compileSdk/targetSdk**: 34 · **JDK**: 17
 
-## 🎯 Objetivo
+##  Objetivo
 
 Que los conceptos básicos de Física (movimiento, velocidad, fuerza, masa,
 gravedad, fricción, energía y máquinas simples) se entiendan **viendo y
 tocando** simulaciones interactivas, no leyendo definiciones. Las fórmulas
 aparecen siempre *después* de la intuición, nunca antes.
 
-## 🧪 Los 8 laboratorios
+##  Los 8 laboratorios
 
 | # | Laboratorio | Qué se descubre |
 |---|---|---|
@@ -31,12 +31,12 @@ aparecen siempre *después* de la intuición, nunca antes.
 Cada laboratorio incluye **3 experimentos guiados** (24 en total) que siguen
 siempre el mismo método científico:
 
-**Predice 🤔 → Experimenta 🧪 → Observa 👀 → Explica 💡**
+**Predice  → Experimenta 🧪 → Observa 👀 → Explica 💡**
 
 Además la app tiene un **cuaderno de científico** con progreso, 8 insignias
 coleccionables y 30 preguntas de repaso.
 
-## 🛠️ Tecnología
+##  Tecnología
 
 - Kotlin + Jetpack Compose + Material 3
 - Canvas de Compose para las simulaciones
@@ -47,7 +47,7 @@ coleccionables y 30 preguntas de repaso.
 - JDK 17, minSdk 24, desugaring de `java.time`
 - Sin motor de videojuegos externo: todas las animaciones son Canvas de Compose
 
-## 📂 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 app/src/main/java/com/kidslab/physicslab/
@@ -68,30 +68,21 @@ app/src/main/java/com/kidslab/physicslab/
     └── navigation/     (NavHost y rutas)
 ```
 
-## 🧾 Documentación incluida
-
-- `MEMORIA_DESCRIPTIVA.md` / `.pdf` — visión general del proyecto y decisiones pedagógicas
-- `MANUAL_USUARIO.md` / `.pdf` — cómo usar la app, pensado para niños y familias
-- `MANUAL_TECNICO.md` / `.pdf` — arquitectura, motores de física y cómo extender la app
-- `BASE_DE_DATOS.md` — esquema completo con diagrama ER (Mermaid)
-- `database/schema.sql` y `database/sample_data.sql` — SQL de las 11 tablas y datos de ejemplo
-- `SUBIR_A_GITHUB.md` — guía paso a paso para subir el proyecto sin usar la terminal
-
-## ✅ Pruebas
+##  Pruebas
 
 - `domain/`: pruebas unitarias de los 6 motores de física (movimiento uniforme,
   distancia, relación fuerza/masa, fricción, caída libre, energía, máquinas simples)
 - `data/`: pruebas con Robolectric + Room en memoria (predicciones, progreso,
   insignias y persistencia)
 
-## 🚀 CI/CD (GitHub Actions)
+##  CI/CD (GitHub Actions)
 
 - **android-build.yml** — compila y corre las pruebas en cada push/PR
 - **docs-build.yml** — genera los 3 PDFs de documentación a partir de los Markdown
 - **release.yml** — compila el APK de release y publica "Física Lab v1.0.0" con
   el archivo `FisicaLab-v1.0.0.apk`
 
-## 🔒 Privacidad
+##  Privacidad
 
 Física Lab no usa internet, no tiene login, no declara permisos y no envía
 datos a ningún servidor. Todo el progreso del científico junior se guarda
