@@ -83,7 +83,7 @@ fun ParameterSliderRow(
         androidx.compose.material3.Slider(
             value = value.toFloat(),
             onValueChange = { onValueChange(it.toDouble()) },
-            valueRange = min.toFloat()..(if (max > min) max.toFloat() else (min + 1f)),
+            valueRange = min.toFloat()..(if (max > min) max.toFloat() else (min + 1.0).toFloat()),
             enabled = enabled && max > min
         )
     }

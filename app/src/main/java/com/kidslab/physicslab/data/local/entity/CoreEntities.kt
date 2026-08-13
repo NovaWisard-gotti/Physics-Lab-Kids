@@ -2,6 +2,7 @@ package com.kidslab.physicslab.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
@@ -56,7 +57,8 @@ data class BadgeEntity(
             childColumns = ["badgeId"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index("userId"), Index("badgeId")]
 )
 data class UserBadgeEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,

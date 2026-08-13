@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -44,7 +46,7 @@ fun LabListScreen(
                 title = { Text("Laboratorios de Física") },
                 actions = {
                     IconButton(onClick = onOpenNotebook) {
-                        Icon(androidx.compose.material.icons.Icons.Filled.Star, contentDescription = "Cuaderno")
+                        Icon(Icons.Filled.Star, contentDescription = "Cuaderno")
                     }
                 }
             )
