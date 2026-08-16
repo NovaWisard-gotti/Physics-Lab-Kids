@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lab_blue">#2F6FED</color>
+    <color name="lab_blue">#3D7BFF</color>
     <color name="lab_blue_dark">#1B4FBF</color>
-    <color name="lab_orange">#FF8A3D</color>
-    <color name="lab_green">#33C481</color>
-    <color name="lab_yellow">#FFD23D</color>
-    <color name="lab_purple">#8C6BFF</color>
+    <color name="lab_orange">#FF9433</color>
+    <color name="lab_green">#2ED47A</color>
+    <color name="lab_yellow">#FFCC33</color>
+    <color name="lab_purple">#9B6BFF</color>
+    <color name="lab_pink">#FF5FA2</color>
     <color name="lab_red">#FF5C5C</color>
-    <color name="lab_background">#F4F7FF</color>
+    <color name="lab_teal">#2BC7C4</color>
+    <color name="lab_background">#F2F6FF</color>
     <color name="lab_surface">#FFFFFF</color>
-    <color name="lab_text">#1F2532</color>
+    <color name="lab_text">#232946</color>
 </resources>
