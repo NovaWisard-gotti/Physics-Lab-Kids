@@ -22,6 +22,7 @@ import com.kidslab.physicslab.domain.engine.MovementEngine
 import com.kidslab.physicslab.ui.components.ParameterSliderRow
 import com.kidslab.physicslab.ui.components.UnitChip
 import com.kidslab.physicslab.ui.components.PeoeStage
+import com.kidslab.physicslab.ui.components.drawEmoji
 import com.kidslab.physicslab.ui.labs.GenericLabScreen
 import com.kidslab.physicslab.ui.labs.GuidedLabViewModel
 import com.kidslab.physicslab.ui.labs.LabComputation
@@ -107,7 +108,7 @@ private fun MovementTrack(velocity: Double, time: Double, animate: Boolean, trig
             val maxDistance = 80.0 // metros equivalentes al ancho completo de la pista visual
             val xFraction = ((distance / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
             val x = xFraction * (size.width - 40f)
-            drawCircle(Color(0xFF2F6FED), radius = 20f, center = Offset(x + 20f, trackY))
+            drawEmoji("🚗", center = Offset(x + 20f, trackY), sizePx = 48f)
         }
         UnitChip(value = "${(distance * 100).toInt() / 100.0} m recorridos")
     }

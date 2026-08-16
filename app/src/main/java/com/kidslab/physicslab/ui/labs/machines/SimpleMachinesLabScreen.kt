@@ -19,6 +19,7 @@ import com.kidslab.physicslab.domain.engine.SimpleMachineEngine
 import com.kidslab.physicslab.ui.components.ParameterSliderRow
 import com.kidslab.physicslab.ui.components.PeoeStage
 import com.kidslab.physicslab.ui.components.UnitChip
+import com.kidslab.physicslab.ui.components.drawEmoji
 import com.kidslab.physicslab.ui.labs.GenericLabScreen
 import com.kidslab.physicslab.ui.labs.LabComputation
 
@@ -112,12 +113,12 @@ private fun LeverVisual(effortArm: Double, loadArm: Double, animate: Boolean, tr
         Canvas(modifier = Modifier.fillMaxWidth().height(120.dp)) {
             val cx = size.width / 2
             val cy = size.height / 2
-            drawCircle(Color(0xFF1F2532), radius = 10f, center = Offset(cx, cy + 20f))
+            drawEmoji("🔺", center = Offset(cx, cy + 22f), sizePx = 26f)
             val leftY = cy - tilt
             val rightY = cy + tilt
             drawLine(Color(0xFFFF8A3D), Offset(cx - 100f, leftY), Offset(cx + 100f, rightY), strokeWidth = 8f)
-            drawCircle(Color(0xFF2F6FED), radius = 10f, center = Offset(cx - 100f, leftY))
-            drawCircle(Color(0xFF33C481), radius = 14f, center = Offset(cx + 100f, rightY))
+            drawEmoji("🖐️", center = Offset(cx - 100f, leftY), sizePx = 28f)
+            drawEmoji("📦", center = Offset(cx + 100f, rightY), sizePx = 30f)
         }
         UnitChip(value = "Brazo esfuerzo: $effortArm m")
     }
@@ -136,7 +137,7 @@ private fun PulleyVisual(ropes: Int, animate: Boolean, trigger: Int) {
             drawCircle(Color(0xFF8C6BFF), radius = 16f, center = Offset(cx, 20f), style = androidx.compose.ui.graphics.drawscope.Stroke(width = 4f))
             val liftY = 90f - (60f * progress.value * speedFactor)
             drawLine(Color(0xFFB9C6E0), Offset(cx, 20f), Offset(cx, liftY), strokeWidth = 4f)
-            drawRect(Color(0xFFFF5C5C), topLeft = Offset(cx - 15f, liftY), size = androidx.compose.ui.geometry.Size(30f, 25f))
+            drawEmoji("📦", center = Offset(cx, liftY + 14f), sizePx = 30f)
         }
         UnitChip(value = "$ropes cuerda(s) de apoyo")
     }
@@ -155,7 +156,7 @@ private fun InclinedPlaneVisual(rampLength: Double, animate: Boolean, trigger: I
             drawLine(Color(0xFFE3C08C), Offset(20f, baseY), Offset(topX, 20f), strokeWidth = 10f)
             val x = 20f + (topX - 20f) * progress.value
             val y = baseY + (20f - baseY) * progress.value
-            drawCircle(Color(0xFF33C481), radius = 12f, center = Offset(x, y))
+            drawEmoji("📦", center = Offset(x, y - 14f), sizePx = 28f)
         }
         UnitChip(value = "Rampa: $rampLength m")
     }

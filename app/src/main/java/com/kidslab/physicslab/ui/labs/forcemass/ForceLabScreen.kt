@@ -22,6 +22,7 @@ import com.kidslab.physicslab.domain.engine.ForceMassEngine
 import com.kidslab.physicslab.domain.model.IntensityLevel
 import com.kidslab.physicslab.ui.components.PeoeStage
 import com.kidslab.physicslab.ui.components.UnitChip
+import com.kidslab.physicslab.ui.components.drawEmoji
 import com.kidslab.physicslab.ui.labs.GenericLabScreen
 import com.kidslab.physicslab.ui.labs.LabComputation
 
@@ -102,14 +103,14 @@ fun ForceMassCart(forceLevel: IntensityLevel, massLevel: IntensityLevel, animate
     }
     val result = ForceMassEngine.simulate(forceLevel, massLevel)
     val normalized = ForceMassEngine.normalizedAcceleration(result)
-    val cartSize = 24f + massLevel.factor.toFloat() * 6f
+    val cartSize = 36f + massLevel.factor.toFloat() * 14f
 
     androidx.compose.foundation.layout.Column {
         Canvas(modifier = Modifier.fillMaxWidth().height(120.dp)) {
             val y = size.height / 2
             val x = (normalized * progress.value) * (size.width - 60f)
             drawLine(Color(0xFFB9C6E0), Offset(0f, y), Offset(size.width, y), strokeWidth = 6f)
-            drawRect(Color(0xFFFF8A3D), topLeft = Offset(x, y - cartSize / 2), size = androidx.compose.ui.geometry.Size(cartSize, cartSize))
+            drawEmoji("🚗", center = Offset(x + cartSize / 2, y), sizePx = cartSize)
         }
         UnitChip(value = "a = ${ForceMassEngine.formattedAcceleration(result.accelerationMs2)}")
     }

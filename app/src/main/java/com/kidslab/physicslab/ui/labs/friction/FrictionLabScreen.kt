@@ -21,6 +21,7 @@ import com.kidslab.physicslab.domain.model.SurfaceType
 import com.kidslab.physicslab.ui.components.ParameterSliderRow
 import com.kidslab.physicslab.ui.components.PeoeStage
 import com.kidslab.physicslab.ui.components.UnitChip
+import com.kidslab.physicslab.ui.components.drawEmoji
 import com.kidslab.physicslab.ui.labs.GenericLabScreen
 import com.kidslab.physicslab.ui.labs.LabComputation
 
@@ -102,7 +103,7 @@ private fun FrictionLanes(surfaces: List<SurfaceType>, initialVelocity: Double, 
                 val d = FrictionEngine.simulate(surface, initialVelocity).stoppingDistanceM
                 val xFraction = ((d / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
                 val x = xFraction * (size.width - 30f)
-                drawCircle(Color(0xFF1F2532), radius = 12f, center = Offset(x + 15f, y))
+                drawEmoji("🚗", center = Offset(x + 15f, y), sizePx = 30f)
             }
         }
         Column {

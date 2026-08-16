@@ -80,7 +80,7 @@ fun PeoeStepper(current: PeoeStage, modifier: Modifier = Modifier) {
                     text = stage.labelEs,
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = if (stage == current) FontWeight.ExtraBold else FontWeight.SemiBold,
-                    color = if (stage == current) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f),
+                    color = if (stage == current) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                     modifier = Modifier.weight(1f),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center
                 )

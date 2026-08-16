@@ -24,6 +24,7 @@ import com.kidslab.physicslab.domain.engine.EnergyEngine
 import com.kidslab.physicslab.ui.components.ParameterSliderRow
 import com.kidslab.physicslab.ui.components.PeoeStage
 import com.kidslab.physicslab.ui.components.UnitChip
+import com.kidslab.physicslab.ui.components.drawEmoji
 import com.kidslab.physicslab.ui.labs.GenericLabScreen
 import com.kidslab.physicslab.ui.labs.LabComputation
 
@@ -90,7 +91,7 @@ private fun RollerCoaster(startHeight: Double, mass: Double, animate: Boolean, t
             drawLine(Color(0xFFB9C6E0), Offset(size.width / 2, groundY), Offset(size.width, topY), strokeWidth = 6f)
             val cartX = size.width * progress.value
             val cartY = if (progress.value <= 0.5f) topY + (groundY - topY) * (progress.value / 0.5f) else groundY - (groundY - topY) * ((progress.value - 0.5f) / 0.5f)
-            drawCircle(Color(0xFFFF8A3D), radius = 14f, center = Offset(cartX, cartY))
+            drawEmoji("🚋", center = Offset(cartX, cartY), sizePx = 30f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             EnergyBar(labelEs = "Potencial", fraction = point.potentialFraction, color = Color(0xFF8C6BFF))

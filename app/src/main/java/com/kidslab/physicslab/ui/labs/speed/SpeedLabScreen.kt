@@ -19,10 +19,11 @@ import com.kidslab.physicslab.domain.engine.MovementEngine
 import com.kidslab.physicslab.ui.components.ParameterSliderRow
 import com.kidslab.physicslab.ui.components.PeoeStage
 import com.kidslab.physicslab.ui.components.UnitChip
+import com.kidslab.physicslab.ui.components.drawEmoji
 import com.kidslab.physicslab.ui.labs.GenericLabScreen
 import com.kidslab.physicslab.ui.labs.LabComputation
 
-private val RACER_COLORS = listOf(Color(0xFF2F6FED), Color(0xFFFF8A3D), Color(0xFF33C481))
+private val RACER_EMOJIS = listOf("🚗", "🏎️", "🚙")
 
 @Composable
 fun SpeedLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
@@ -115,7 +116,7 @@ private fun RaceTrack(velocities: List<Double>, time: Double, animate: Boolean, 
                 val d = MovementEngine.simulate(v, time).distanceM
                 val xFraction = ((d / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
                 val x = xFraction * (size.width - 30f)
-                drawCircle(RACER_COLORS[index % RACER_COLORS.size], radius = 16f, center = Offset(x + 15f, y))
+                drawEmoji(RACER_EMOJIS[index % RACER_EMOJIS.size], center = Offset(x + 15f, y), sizePx = 34f)
             }
         }
         UnitChip(value = "Carrera de ${velocities.size} carritos")

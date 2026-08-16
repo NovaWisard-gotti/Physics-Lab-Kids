@@ -119,7 +119,11 @@ fun ScientistSetupScreen(repository: PhysicsLabRepository, onDone: () -> Unit) {
                 onClick = viewModel::save,
                 enabled = state.name.isNotBlank(),
                 shape = RoundedCornerShape(50),
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    disabledContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.35f),
+                    disabledContentColor = Color.White
+                ),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(

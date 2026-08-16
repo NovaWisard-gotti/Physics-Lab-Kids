@@ -17,7 +17,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         val container = (application as PhysicsLabApplication).container
         setContent {
-            FisicaLabTheme {
+            // Se fuerza el tema claro siempre: es una app para niños con colores e ilustraciones
+            // pensadas para fondos claros; seguir el modo oscuro del sistema bajaba el contraste del texto.
+            FisicaLabTheme(useDarkTheme = false) {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     PhysicsLabRoot(container = container)
                 }
