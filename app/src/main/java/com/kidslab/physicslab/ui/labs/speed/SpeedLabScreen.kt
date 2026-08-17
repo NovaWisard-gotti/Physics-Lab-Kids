@@ -116,7 +116,7 @@ private fun RaceTrack(velocities: List<Double>, time: Double, animate: Boolean, 
                 val d = MovementEngine.simulate(v, time).distanceM
                 val xFraction = ((d / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
                 val x = xFraction * (size.width - 30f)
-                drawEmoji(RACER_EMOJIS[index % RACER_EMOJIS.size], center = Offset(x + 15f, y), sizePx = 34f)
+                drawEmoji(RACER_EMOJIS[index % RACER_EMOJIS.size], center = Offset(x + 15f, y), sizePx = 44f)
             }
         }
         UnitChip(value = "Carrera de ${velocities.size} carritos")

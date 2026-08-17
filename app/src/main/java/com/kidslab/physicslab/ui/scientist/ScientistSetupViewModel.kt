@@ -16,7 +16,7 @@ data class ScientistSetupUiState(
     val saved: Boolean = false
 )
 
-val AVATARS = listOf("🧑\u200D\uD83D\uDD2C", "\uD83D\uDC69\u200D\uD83D\uDD2C", "\uD83E\uDDD1\u200D\uD83D\uDD2C", "\uD83D\uDC68\u200D\uD83D\uDD2C")
+val AVATARS = listOf("🧑\u200D\uD83D\uDD2C", "\uD83D\uDC69\u200D\uD83D\uDD2C", "\uD83E\uDDD1\u200D\uD83D\uDE80", "\uD83D\uDC68\u200D\uD83D\uDD2C")
 val COAT_COLORS = listOf("#2F6FED", "#FF8A3D", "#33C481", "#8C6BFF", "#FF5C5C")
 
 class ScientistSetupViewModel(private val repository: PhysicsLabRepository) : ViewModel() {

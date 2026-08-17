@@ -122,7 +122,7 @@ private fun TwoObjectFall(heightM: Double, planet: PlanetMode, animate: Boolean,
             val groundY = size.height - 10f
             listOf(0.3f to "🏓", 0.7f to "🎳").forEach { (xFrac, emoji) ->
                 val y = (groundY - 20f) * progress.value
-                drawEmoji(emoji, center = Offset(size.width * xFrac, y + 16f), sizePx = 34f)
+                drawEmoji(emoji, center = Offset(size.width * xFrac, y + 16f), sizePx = 46f)
             }
             drawLine(Color(0xFF8C6BFF), Offset(0f, groundY), Offset(size.width, groundY), strokeWidth = 6f)
         }
@@ -152,8 +152,8 @@ private fun EarthMoonFall(heightM: Double, animate: Boolean, trigger: Int) {
             val groundY = size.height - 10f
             val earthY = (groundY - 20f) * earthProgress.value
             val moonY = (groundY - 20f) * moonProgress.value
-            drawEmoji("🍎", center = Offset(size.width * 0.3f, earthY + 16f), sizePx = 32f)
-            drawEmoji("🍎", center = Offset(size.width * 0.7f, moonY + 16f), sizePx = 32f)
+            drawEmoji("🍎", center = Offset(size.width * 0.3f, earthY + 16f), sizePx = 44f)
+            drawEmoji("🍎", center = Offset(size.width * 0.7f, moonY + 16f), sizePx = 44f)
             drawLine(Color(0xFFB9C6E0), Offset(0f, groundY), Offset(size.width, groundY), strokeWidth = 6f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -173,7 +173,7 @@ private fun SingleFall(heightM: Double, planet: PlanetMode, animate: Boolean, tr
         Canvas(modifier = Modifier.fillMaxWidth().height(160.dp)) {
             val groundY = size.height - 10f
             val y = (groundY - 20f) * progress.value
-            drawEmoji("🍎", center = Offset(size.width / 2, y + 18f), sizePx = 36f)
+            drawEmoji("🍎", center = Offset(size.width / 2, y + 18f), sizePx = 50f)
             drawLine(Color(0xFF8C6BFF), Offset(0f, groundY), Offset(size.width, groundY), strokeWidth = 6f)
         }
         UnitChip(value = "${planet.emoji} ${planet.displayEs} · g = ${planet.gravity} m/s²")

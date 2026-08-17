@@ -103,7 +103,7 @@ fun ForceMassCart(forceLevel: IntensityLevel, massLevel: IntensityLevel, animate
     }
     val result = ForceMassEngine.simulate(forceLevel, massLevel)
     val normalized = ForceMassEngine.normalizedAcceleration(result)
-    val cartSize = 36f + massLevel.factor.toFloat() * 14f
+    val cartSize = 48f + massLevel.factor.toFloat() * 18f
 
     androidx.compose.foundation.layout.Column {
         Canvas(modifier = Modifier.fillMaxWidth().height(120.dp)) {

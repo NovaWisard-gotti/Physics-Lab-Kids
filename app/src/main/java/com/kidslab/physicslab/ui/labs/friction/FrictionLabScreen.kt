@@ -103,7 +103,7 @@ private fun FrictionLanes(surfaces: List<SurfaceType>, initialVelocity: Double, 
                 val d = FrictionEngine.simulate(surface, initialVelocity).stoppingDistanceM
                 val xFraction = ((d / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
                 val x = xFraction * (size.width - 30f)
-                drawEmoji("🚗", center = Offset(x + 15f, y), sizePx = 30f)
+                drawEmoji("🚗", center = Offset(x + 15f, y), sizePx = 40f)
             }
         }
         Column {
