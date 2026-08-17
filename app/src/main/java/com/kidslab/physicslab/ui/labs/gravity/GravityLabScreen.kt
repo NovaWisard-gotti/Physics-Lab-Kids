@@ -62,7 +62,7 @@ fun GravityLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
                     val result = GravityEngine.simulateFall("Objeto", 1.0, h, PlanetMode.EARTH)
                     LabComputation(
                         resultValue = result.fallTimeS, resultUnitSymbol = "s",
-                        resultDescriptionEs = "Desde $h m tardó ${GravityEngine.formattedTime(result.fallTimeS)} en caer.",
+                        resultDescriptionEs = "Desde ${String.format("%.1f", h)} m tardó ${GravityEngine.formattedTime(result.fallTimeS)} en caer.",
                         matchesOption = { it?.contains("más tiempo") == true }
                     )
                 }

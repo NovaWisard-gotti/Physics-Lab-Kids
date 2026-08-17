@@ -127,14 +127,18 @@ fun ParameterSliderRow(
     min: Double,
     max: Double,
     onValueChange: (Double) -> Unit,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    /** Cantidad de pasos discretos entre [min] y [max] (0 = deslizador continuo). */
+    steps: Int = 0,
+    /** Decimales a mostrar en la burbuja de valor; usar 0 para cantidades que solo tienen sentido como enteros. */
+    decimals: Int = 1
 ) {
     Column(modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
         Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Text(labelEs, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
             Surface(shape = RoundedCornerShape(50), color = MaterialTheme.colorScheme.primary.copy(alpha = 0.14f)) {
                 Text(
-                    text = "${String.format("%.1f", value)} $unitSymbol",
+                    text = "${String.format("%.${decimals}f", value)} $unitSymbol",
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.ExtraBold,
                     color = MaterialTheme.colorScheme.primary,
@@ -147,6 +151,7 @@ fun ParameterSliderRow(
             onValueChange = { onValueChange(it.toDouble()) },
             valueRange = min.toFloat()..(if (max > min) max.toFloat() else (min + 1.0).toFloat()),
             enabled = enabled && max > min,
+            steps = steps,
             colors = SliderDefaults.colors(
                 thumbColor = MaterialTheme.colorScheme.primary,
                 activeTrackColor = MaterialTheme.colorScheme.primary

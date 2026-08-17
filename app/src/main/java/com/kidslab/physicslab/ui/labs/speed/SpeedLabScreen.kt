@@ -46,7 +46,7 @@ fun SpeedLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
                 "vel_03" -> {
                     val v = params["velocity"] ?: 0.0
                     val d = MovementEngine.simulate(v, time).distanceM
-                    LabComputation(d, "m", "Con $v m/s durante $time s, el carrito recorrió ${MovementEngine.formattedDistance(d)}.") { true }
+                    LabComputation(d, "m", "Con ${String.format("%.1f", v)} m/s durante ${String.format("%.1f", time)} s, el carrito recorrió ${MovementEngine.formattedDistance(d)}.") { true }
                 }
                 else -> {
                     val a = params["velocityA"] ?: 0.0

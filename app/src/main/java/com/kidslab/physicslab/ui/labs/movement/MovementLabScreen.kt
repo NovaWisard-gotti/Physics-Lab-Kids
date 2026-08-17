@@ -50,7 +50,7 @@ fun MovementLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
             LabComputation(
                 resultValue = result.distanceM,
                 resultUnitSymbol = "m",
-                resultDescriptionEs = "El carrito recorrió ${MovementEngine.formattedDistance(result.distanceM)} en $t s.",
+                resultDescriptionEs = "El carrito recorrió ${MovementEngine.formattedDistance(result.distanceM)} en ${String.format("%.1f", t)} s.",
                 matchesOption = { option ->
                     when {
                         option?.contains("más distancia") == true -> v >= 2.5
