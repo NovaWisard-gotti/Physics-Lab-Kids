@@ -85,7 +85,7 @@ fun FrictionLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
 @Composable
 private fun FrictionLanes(surfaces: List<SurfaceType>, initialVelocity: Double, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, initialVelocity) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(1400)) } else progress.snapTo(0f)
     }
     val maxDistance = 40.0
@@ -103,7 +103,7 @@ private fun FrictionLanes(surfaces: List<SurfaceType>, initialVelocity: Double, 
                 val d = FrictionEngine.simulate(surface, initialVelocity).stoppingDistanceM
                 val xFraction = ((d / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
                 val x = xFraction * (size.width - 30f)
-                drawEmoji("🚗", center = Offset(x + 15f, y), sizePx = 40f)
+                drawEmoji("🚗", center = Offset(x + 15f, y), size = 32.dp)
             }
         }
         Column {

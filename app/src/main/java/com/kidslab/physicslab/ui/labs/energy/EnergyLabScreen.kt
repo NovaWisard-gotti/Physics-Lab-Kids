@@ -76,7 +76,7 @@ fun EnergyLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
 @Composable
 private fun RollerCoaster(startHeight: Double, mass: Double, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, startHeight, mass) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(1800)) } else progress.snapTo(0f)
     }
     val currentHeight = startHeight * (1 - progress.value)
@@ -91,7 +91,7 @@ private fun RollerCoaster(startHeight: Double, mass: Double, animate: Boolean, t
             drawLine(Color(0xFFB9C6E0), Offset(size.width / 2, groundY), Offset(size.width, topY), strokeWidth = 6f)
             val cartX = size.width * progress.value
             val cartY = if (progress.value <= 0.5f) topY + (groundY - topY) * (progress.value / 0.5f) else groundY - (groundY - topY) * ((progress.value - 0.5f) / 0.5f)
-            drawEmoji("🚋", center = Offset(cartX, cartY), sizePx = 42f)
+            drawEmoji("🚋", center = Offset(cartX, cartY), size = 36.dp)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             EnergyBar(labelEs = "Potencial", fraction = point.potentialFraction, color = Color(0xFF8C6BFF))

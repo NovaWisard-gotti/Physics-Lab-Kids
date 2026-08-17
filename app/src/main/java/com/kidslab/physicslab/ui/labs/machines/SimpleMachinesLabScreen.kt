@@ -105,7 +105,7 @@ fun SimpleMachinesLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit
 @Composable
 private fun LeverVisual(effortArm: Double, loadArm: Double, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, effortArm, loadArm) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(1200)) } else progress.snapTo(0f)
     }
     val tilt = (10f * progress.value) * (if (effortArm > loadArm) 1f else -1f)
@@ -113,21 +113,21 @@ private fun LeverVisual(effortArm: Double, loadArm: Double, animate: Boolean, tr
         Canvas(modifier = Modifier.fillMaxWidth().height(120.dp)) {
             val cx = size.width / 2
             val cy = size.height / 2
-            drawEmoji("🔺", center = Offset(cx, cy + 24f), sizePx = 32f)
+            drawEmoji("🔺", center = Offset(cx, cy + 24f), size = 24.dp)
             val leftY = cy - tilt
             val rightY = cy + tilt
             drawLine(Color(0xFFFF8A3D), Offset(cx - 100f, leftY), Offset(cx + 100f, rightY), strokeWidth = 8f)
-            drawEmoji("🖐️", center = Offset(cx - 100f, leftY), sizePx = 40f)
-            drawEmoji("📦", center = Offset(cx + 100f, rightY), sizePx = 42f)
+            drawEmoji("🖐️", center = Offset(cx - 100f, leftY), size = 34.dp)
+            drawEmoji("📦", center = Offset(cx + 100f, rightY), size = 36.dp)
         }
-        UnitChip(value = "Brazo esfuerzo: $effortArm m")
+        UnitChip(value = "Brazo esfuerzo: ${String.format("%.1f", effortArm)} m")
     }
 }
 
 @Composable
 private fun PulleyVisual(ropes: Int, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, ropes) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(1400)) } else progress.snapTo(0f)
     }
     val speedFactor = 1f / ropes
@@ -137,7 +137,7 @@ private fun PulleyVisual(ropes: Int, animate: Boolean, trigger: Int) {
             drawCircle(Color(0xFF8C6BFF), radius = 16f, center = Offset(cx, 20f), style = androidx.compose.ui.graphics.drawscope.Stroke(width = 4f))
             val liftY = 90f - (60f * progress.value * speedFactor)
             drawLine(Color(0xFFB9C6E0), Offset(cx, 20f), Offset(cx, liftY), strokeWidth = 4f)
-            drawEmoji("📦", center = Offset(cx, liftY + 14f), sizePx = 42f)
+            drawEmoji("📦", center = Offset(cx, liftY + 14f), size = 36.dp)
         }
         UnitChip(value = "$ropes cuerda(s) de apoyo")
     }
@@ -146,7 +146,7 @@ private fun PulleyVisual(ropes: Int, animate: Boolean, trigger: Int) {
 @Composable
 private fun InclinedPlaneVisual(rampLength: Double, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, rampLength) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(1400)) } else progress.snapTo(0f)
     }
     Column {
@@ -156,8 +156,8 @@ private fun InclinedPlaneVisual(rampLength: Double, animate: Boolean, trigger: I
             drawLine(Color(0xFFE3C08C), Offset(20f, baseY), Offset(topX, 20f), strokeWidth = 10f)
             val x = 20f + (topX - 20f) * progress.value
             val y = baseY + (20f - baseY) * progress.value
-            drawEmoji("📦", center = Offset(x, y - 16f), sizePx = 40f)
+            drawEmoji("📦", center = Offset(x, y - 16f), size = 32.dp)
         }
-        UnitChip(value = "Rampa: $rampLength m")
+        UnitChip(value = "Rampa: ${String.format("%.1f", rampLength)} m")
     }
 }

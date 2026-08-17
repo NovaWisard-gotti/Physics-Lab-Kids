@@ -95,7 +95,7 @@ fun LevelPicker(labelEs: String, current: Double, onChange: (Double) -> Unit) {
 @Composable
 fun ForceMassCart(forceLevel: IntensityLevel, massLevel: IntensityLevel, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, forceLevel, massLevel) {
         if (animate) {
             progress.snapTo(0f)
             progress.animateTo(1f, tween(1400))
@@ -103,14 +103,15 @@ fun ForceMassCart(forceLevel: IntensityLevel, massLevel: IntensityLevel, animate
     }
     val result = ForceMassEngine.simulate(forceLevel, massLevel)
     val normalized = ForceMassEngine.normalizedAcceleration(result)
-    val cartSize = 48f + massLevel.factor.toFloat() * 18f
+    val cartSizeDp = 34.dp + (massLevel.factor.toFloat() * 8).dp
 
     androidx.compose.foundation.layout.Column {
         Canvas(modifier = Modifier.fillMaxWidth().height(120.dp)) {
+            val cartSizePx = cartSizeDp.toPx()
             val y = size.height / 2
-            val x = (normalized * progress.value) * (size.width - 60f)
+            val x = (normalized * progress.value) * (size.width - cartSizePx)
             drawLine(Color(0xFFB9C6E0), Offset(0f, y), Offset(size.width, y), strokeWidth = 6f)
-            drawEmoji("🚗", center = Offset(x + cartSize / 2, y), sizePx = cartSize)
+            drawEmoji("🚗", center = Offset(x + cartSizePx / 2, y), size = cartSizeDp)
         }
         UnitChip(value = "a = ${ForceMassEngine.formattedAcceleration(result.accelerationMs2)}")
     }

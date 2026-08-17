@@ -100,7 +100,7 @@ fun SpeedLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
 @Composable
 private fun RaceTrack(velocities: List<Double>, time: Double, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, velocities, time) {
         if (animate) {
             progress.snapTo(0f)
             progress.animateTo(1f, tween(1400))
@@ -116,7 +116,7 @@ private fun RaceTrack(velocities: List<Double>, time: Double, animate: Boolean, 
                 val d = MovementEngine.simulate(v, time).distanceM
                 val xFraction = ((d / maxDistance).coerceIn(0.0, 1.0) * progress.value).toFloat()
                 val x = xFraction * (size.width - 30f)
-                drawEmoji(RACER_EMOJIS[index % RACER_EMOJIS.size], center = Offset(x + 15f, y), sizePx = 44f)
+                drawEmoji(RACER_EMOJIS[index % RACER_EMOJIS.size], center = Offset(x + 15f, y), size = 34.dp)
             }
         }
         UnitChip(value = "Carrera de ${velocities.size} carritos")

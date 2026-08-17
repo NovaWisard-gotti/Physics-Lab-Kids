@@ -114,7 +114,7 @@ fun GravityLabScreen(repository: PhysicsLabRepository, onBack: () -> Unit) {
 @Composable
 private fun TwoObjectFall(heightM: Double, planet: PlanetMode, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, heightM) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(1400)) } else progress.snapTo(0f)
     }
     Column {
@@ -122,11 +122,11 @@ private fun TwoObjectFall(heightM: Double, planet: PlanetMode, animate: Boolean,
             val groundY = size.height - 10f
             listOf(0.3f to "🏓", 0.7f to "🎳").forEach { (xFrac, emoji) ->
                 val y = (groundY - 20f) * progress.value
-                drawEmoji(emoji, center = Offset(size.width * xFrac, y + 16f), sizePx = 46f)
+                drawEmoji(emoji, center = Offset(size.width * xFrac, y + 16f), size = 34.dp)
             }
             drawLine(Color(0xFF8C6BFF), Offset(0f, groundY), Offset(size.width, groundY), strokeWidth = 6f)
         }
-        UnitChip(value = "Altura: ${heightM} m")
+        UnitChip(value = "Altura: ${String.format("%.1f", heightM)} m")
     }
 }
 
@@ -134,17 +134,17 @@ private fun TwoObjectFall(heightM: Double, planet: PlanetMode, animate: Boolean,
 private fun EarthMoonFall(heightM: Double, animate: Boolean, trigger: Int) {
     val earthProgress = remember { Animatable(0f) }
     val moonProgress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, heightM) {
         if (animate) {
             earthProgress.snapTo(0f); moonProgress.snapTo(0f)
         } else {
             earthProgress.snapTo(0f); moonProgress.snapTo(0f)
         }
     }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, heightM) {
         if (animate) earthProgress.animateTo(1f, tween(1200))
     }
-    LaunchedEffect(trigger, animate) {
+    LaunchedEffect(trigger, animate, heightM) {
         if (animate) moonProgress.animateTo(1f, tween(2800))
     }
     Column {
@@ -152,8 +152,8 @@ private fun EarthMoonFall(heightM: Double, animate: Boolean, trigger: Int) {
             val groundY = size.height - 10f
             val earthY = (groundY - 20f) * earthProgress.value
             val moonY = (groundY - 20f) * moonProgress.value
-            drawEmoji("🍎", center = Offset(size.width * 0.3f, earthY + 16f), sizePx = 44f)
-            drawEmoji("🍎", center = Offset(size.width * 0.7f, moonY + 16f), sizePx = 44f)
+            drawEmoji("🍎", center = Offset(size.width * 0.3f, earthY + 16f), size = 34.dp)
+            drawEmoji("🍎", center = Offset(size.width * 0.7f, moonY + 16f), size = 34.dp)
             drawLine(Color(0xFFB9C6E0), Offset(0f, groundY), Offset(size.width, groundY), strokeWidth = 6f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -166,16 +166,16 @@ private fun EarthMoonFall(heightM: Double, animate: Boolean, trigger: Int) {
 @Composable
 private fun SingleFall(heightM: Double, planet: PlanetMode, animate: Boolean, trigger: Int) {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(trigger, animate, planet) {
+    LaunchedEffect(trigger, animate, planet, heightM) {
         if (animate) { progress.snapTo(0f); progress.animateTo(1f, tween(if (planet == PlanetMode.MOON) 2400 else 1400)) } else progress.snapTo(0f)
     }
     Column {
         Canvas(modifier = Modifier.fillMaxWidth().height(160.dp)) {
             val groundY = size.height - 10f
             val y = (groundY - 20f) * progress.value
-            drawEmoji("🍎", center = Offset(size.width / 2, y + 18f), sizePx = 50f)
+            drawEmoji("🍎", center = Offset(size.width / 2, y + 18f), size = 44.dp)
             drawLine(Color(0xFF8C6BFF), Offset(0f, groundY), Offset(size.width, groundY), strokeWidth = 6f)
         }
-        UnitChip(value = "${planet.emoji} ${planet.displayEs} · g = ${planet.gravity} m/s²")
+        UnitChip(value = "${planet.emoji} ${planet.displayEs} · g = ${String.format("%.1f", planet.gravity)} m/s²")
     }
 }
